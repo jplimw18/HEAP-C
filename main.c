@@ -33,7 +33,7 @@ void print_heap(Heap* h)
             printf("campo ok: ");
         }
 
-        printf("%i\n", h->arr[i]);
+        printf("%d\n", h->arr[i]);
     }
 
     printf("\ntail: %i, range: %zu\n", h->tail, h->range);
@@ -58,7 +58,15 @@ void insert_node(Heap* h, int node)
         resize_heap(h);
     }
 
-    h->arr[h->tail++] = node;
+    if(h->tail == -1)
+    {
+        h->arr[0] = node;
+        h->tail++;
+    }
+    else
+    {
+        h->arr[h->tail++] = node;
+    }
 }
 
 int main()
